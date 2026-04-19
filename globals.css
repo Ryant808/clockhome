@@ -1,0 +1,1122 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ============================================
+   FLIP CLOCK STYLES
+   ============================================ */
+
+.flip-clock-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100dvh;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.flip-clock-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 1;
+  padding-top: 2rem;
+  padding-bottom: 6rem;
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.flip-clock-main::-webkit-scrollbar {
+  display: none;
+}
+
+.flip-clock-display {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ============================================
+   FLIP UNIT
+   ============================================ */
+
+.flip-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flip-unit__cards {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* ============================================
+   COLON SEPARATOR
+   ============================================ */
+
+.flip-colon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0 0.25rem;
+}
+
+.flip-colon__dot {
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.flip-colon__dot--small {
+  width: 0.625rem;
+  height: 0.625rem;
+  gap: 0.75rem;
+}
+
+/* ============================================
+   AM/PM INDICATOR
+   ============================================ */
+
+.flip-ampm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.02em;
+  margin-bottom: -1rem;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   DATE DISPLAY (Vietnamese)
+   ============================================ */
+
+.flip-date-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  animation: dateFadeIn 0.8s ease-out;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.flip-date-greeting {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.05em;
+  text-align: center;
+  animation: dateSlideIn 0.6s ease-out;
+}
+
+.flip-date-weekday {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(2.8rem, 7vw, 4rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.06em;
+  text-align: center;
+  animation: dateSlideIn 0.6s ease-out 0.1s both;
+}
+
+.flip-date-full {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.04em;
+  text-align: center;
+  animation: dateSlideIn 0.6s ease-out 0.2s both;
+}
+
+.flip-date-time-text {
+  font-family: var(--font-mono), 'Courier New', monospace;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.15em;
+  text-align: center;
+  margin-top: 0.25rem;
+  animation: dateSlideIn 0.6s ease-out 0.3s both;
+}
+
+@keyframes dateFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dateSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   FLOATING CONTROLS
+   ============================================ */
+
+.flip-controls {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.625rem;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  opacity: 0.65;
+  transition: opacity 0.4s ease;
+  z-index: 100;
+}
+
+.flip-clock-wrapper:hover .flip-controls {
+  opacity: 1;
+}
+
+.flip-controls__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.875rem;
+  border: none;
+  border-radius: 0.625rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.flip-controls__btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.flip-controls__btn:active {
+  transform: scale(0.96);
+}
+
+.flip-controls__btn--active {
+  background: rgba(255, 200, 50, 0.15);
+  color: #ffd84d;
+  border: 1px solid rgba(255, 200, 50, 0.2);
+}
+
+.flip-controls__btn--active:hover {
+  background: rgba(255, 200, 50, 0.25);
+  color: #ffe066;
+}
+
+/* ============================================
+   DIGIT CARD — GPU-accelerated flip animation
+   ============================================ */
+
+.flip-card {
+  position: relative;
+  width: clamp(3rem, 8vw, 7.5rem);
+  height: clamp(4rem, 10.5vw, 10rem);
+  border-radius: 0.625rem;
+  background: linear-gradient(
+    180deg,
+    #2a2a2a 0%,
+    #222222 49.9%,
+    #1a1a1a 50.1%,
+    #181818 100%
+  );
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.6),
+    0 1px 4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+}
+
+.flip-card__digit {
+  display: block;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(2.5rem, 7vw, 6.5rem);
+  font-weight: 700;
+  color: #f0f0f0;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flip-card__top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+  border-radius: 0.625rem 0.625rem 0 0;
+  background: linear-gradient(180deg, #2d2d2d 0%, #252525 100%);
+  z-index: 1;
+}
+
+.flip-card__top .flip-card__digit {
+  position: relative;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card__bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+  border-radius: 0 0 0.625rem 0.625rem;
+  background: linear-gradient(180deg, #1e1e1e 0%, #1a1a1a 100%);
+  z-index: 1;
+}
+
+.flip-card__bottom .flip-card__digit {
+  position: relative;
+  height: 200%;
+  top: -100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card__flip-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+  border-radius: 0.625rem 0.625rem 0 0;
+  background: linear-gradient(180deg, #2d2d2d 0%, #252525 100%);
+  z-index: 3;
+  transform-origin: bottom center;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card__flip-top .flip-card__digit {
+  position: relative;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card__flip-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+  border-radius: 0 0 0.625rem 0.625rem;
+  background: linear-gradient(180deg, #1e1e1e 0%, #1a1a1a 100%);
+  z-index: 2;
+  transform-origin: top center;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform: rotateX(90deg) translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card__flip-bottom .flip-card__digit {
+  position: relative;
+  height: 200%;
+  top: -100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card__divider {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  transform: translateY(-50%);
+}
+
+/* ============================================
+   FLIP ANIMATION
+   ============================================ */
+
+.flip-card.flipping .flip-card__flip-top {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  animation: flipTop 0.3s cubic-bezier(0.37, 0, 0.63, 1) forwards;
+}
+
+.flip-card.flipping .flip-card__flip-bottom {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  animation: flipBottom 0.3s cubic-bezier(0.37, 0, 0.63, 1) 0.3s forwards;
+}
+
+@keyframes flipTop {
+  0%   { transform: rotateX(0deg) translateZ(0); }
+  100% { transform: rotateX(-90deg) translateZ(0); }
+}
+
+@keyframes flipBottom {
+  0%   { transform: rotateX(90deg) translateZ(0); }
+  100% { transform: rotateX(0deg) translateZ(0); }
+}
+
+.flip-card.flipping::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  border-radius: 0.625rem 0.625rem 0 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, transparent 100%);
+  z-index: 5;
+  pointer-events: none;
+  animation: shadowFade 0.6s ease-out forwards;
+}
+
+@keyframes shadowFade {
+  0%   { opacity: 1; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .flip-clock-display { gap: 0.4rem; }
+  .flip-unit__cards { gap: 0.25rem; }
+  .flip-colon { gap: 0.75rem; padding: 0 0.125rem; }
+  .flip-colon__dot { width: 0.5rem; height: 0.5rem; }
+  .flip-ampm { font-size: 1.4rem; }
+  .flip-date-greeting { font-size: 0.8rem; }
+  .flip-date-weekday { font-size: 0.95rem; }
+  .flip-date-full { font-size: 0.75rem; }
+  .flip-date-time-text { font-size: 0.65rem; }
+  .flip-controls { bottom: 1rem; gap: 0.25rem; padding: 0.5rem; }
+  .flip-controls__btn { padding: 0.375rem 0.625rem; font-size: 0.7rem; }
+  .flip-controls__btn span { display: none; }
+  .flip-controls { opacity: 0.5; }
+  .flip-weather-container { width: 95vw; }
+  .weather-header-left { gap: 0.3rem; }
+  .weather-city-name { display: none; }
+  .weather-forecast-desc { display: none; }
+  .weather-forecast-precip { display: none; }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .flip-clock-display { gap: 0.5rem; }
+  .flip-weather-container { width: 90vw; }
+}
+
+@media (min-width: 1200px) {
+  .flip-clock-display { gap: 1.25rem; }
+  .flip-unit__cards { gap: 0.6rem; }
+  .flip-colon { gap: 2rem; padding: 0 0.5rem; }
+  .flip-colon__dot { width: 1rem; height: 1rem; }
+}
+
+/* ============================================
+   MIDNIGHT / NEW DAY EFFECT
+   ============================================ */
+
+.flip-card.midnight-glow {
+  animation: midnightCardGlow 5s ease-in-out infinite;
+}
+
+@keyframes midnightCardGlow {
+  0%   { box-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 0 15px rgba(255,215,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04); }
+  50%  { box-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 0 30px rgba(255,215,0,0.6), 0 0 60px rgba(255,215,0,0.2), inset 0 1px 0 rgba(255,255,255,0.04); }
+  100% { box-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 0 15px rgba(255,215,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04); }
+}
+
+.flip-card.midnight-glow .flip-card__digit {
+  color: #fff8dc;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.flip-clock-display.midnight-flip-glow {
+  animation: midnightDisplayPulse 3s ease-in-out infinite;
+}
+
+@keyframes midnightDisplayPulse {
+  0%, 100% { filter: brightness(1); transform: scale(1); }
+  15%  { filter: brightness(1.4); transform: scale(1.03); }
+  30%  { filter: brightness(1); transform: scale(1); }
+}
+
+.flip-clock-wrapper.midnight-effect {
+  animation: midnightBgFlash 0.8s ease-out;
+}
+
+@keyframes midnightBgFlash {
+  0%   { background-color: #000000; }
+  20%  { background-color: #0a0800; }
+  40%  { background-color: #1a1200; }
+  60%  { background-color: #0a0800; }
+  100% { background-color: #000000; }
+}
+
+.midnight-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: midnightFadeIn 0.5s ease-out forwards, midnightFadeOut 1.5s ease-in 4s forwards;
+}
+
+.midnight-stars {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.05) 30%, transparent 70%);
+  animation: midnightGlow 2s ease-in-out infinite alternate;
+}
+
+.midnight-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.confetti-particle {
+  position: absolute;
+  top: -10px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(45vh) rotate(360deg) scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(720deg) scale(0.6);
+  }
+}
+
+.midnight-ripple {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.ripple-ring {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 215, 0, 0.6);
+  animation: rippleExpand 3s ease-out infinite;
+  opacity: 0;
+}
+
+@keyframes rippleExpand {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+    border-width: 3px;
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+.midnight-message {
+  position: relative;
+  z-index: 2;
+  animation: midnightTextIn 1s ease-out 0.3s both;
+}
+
+.midnight-message span {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow:
+    0 0 20px rgba(255, 215, 0, 0.6),
+    0 0 40px rgba(255, 215, 0, 0.3),
+    0 0 80px rgba(255, 215, 0, 0.15);
+  letter-spacing: 0.08em;
+}
+
+@keyframes midnightFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes midnightGlow {
+  from { opacity: 0.3; }
+  to   { opacity: 0.9; }
+}
+
+@keyframes midnightTextIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7) translateY(30px);
+  }
+  50% {
+    transform: scale(1.08) translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes midnightFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ============================================
+   WEATHER WIDGET STYLES
+   ============================================ */
+
+.flip-weather-container {
+  width: min(85vw, 600px);
+  animation: weatherFadeIn 0.8s ease-out 0.4s both;
+}
+
+@keyframes weatherFadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.weather-widget {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.weather-widget:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.weather-widget--expanded {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Loading state */
+.weather-widget--loading {
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-loading-pulse {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  animation: weatherPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes weatherPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.weather-loading-icon {
+  font-size: 1.5rem;
+}
+
+.weather-loading-text {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Error state */
+.weather-widget--error {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.weather-error-icon {
+  font-size: 1.25rem;
+}
+
+.weather-error-text {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  flex: 1;
+}
+
+.weather-retry-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.weather-retry-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* Header */
+.weather-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  transition: all 0.2s ease;
+}
+
+.weather-header:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.weather-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weather-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weather-city-icon {
+  font-size: 0.9rem;
+}
+
+.weather-city-name {
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.02em;
+}
+
+.weather-current-icon {
+  font-size: 1.5rem;
+}
+
+.weather-current-temp {
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.weather-current-desc {
+  font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 400;
+}
+
+/* Content */
+.weather-content {
+  padding: 0 1.25rem 1.25rem;
+  animation: weatherContentIn 0.3s ease-out;
+}
+
+@keyframes weatherContentIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Details grid */
+.weather-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.625rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.weather-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.625rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.625rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.weather-detail-item svg {
+  color: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.weather-detail-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.45);
+  min-width: 0;
+}
+
+.weather-detail-value {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* Forecast section */
+.weather-forecast-section {
+  margin-top: 0.75rem;
+}
+
+.weather-forecast-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.weather-forecast-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.weather-forecast-row {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s ease;
+}
+
+.weather-forecast-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.weather-forecast-row--today {
+  background: rgba(255, 200, 50, 0.06);
+  border: 1px solid rgba(255, 200, 50, 0.08);
+}
+
+.weather-forecast-day {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 3.5rem;
+}
+
+.weather-forecast-day {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.weather-forecast-date {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 400;
+}
+
+.weather-forecast-icon {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.weather-forecast-desc {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.weather-forecast-precip {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  color: rgba(100, 180, 255, 0.8);
+  min-width: 2.5rem;
+  justify-content: flex-end;
+}
+
+.weather-forecast-precip svg {
+  color: rgba(100, 180, 255, 0.6);
+}
+
+.weather-forecast-precip-none {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.weather-forecast-temps {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  justify-content: flex-end;
+  min-width: 3rem;
+}
+
+.weather-forecast-temp {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.weather-forecast-temp--max {
+  color: rgba(255, 200, 80, 0.9);
+}
+
+.weather-forecast-temp--min {
+  color: rgba(120, 180, 255, 0.8);
+}
+
+.weather-forecast-temp-divider {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.7rem;
+}
+
+/* Refresh & Source */
+.weather-refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.72rem;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.weather-refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.weather-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.weather-source {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 0.5rem;
+  text-align: right;
+}
